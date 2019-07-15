@@ -23,6 +23,7 @@ public class CountryController {
         Pattern pattern = Pattern.compile("^" + letter, Pattern.CASE_INSENSITIVE);
         //        System.out.println(pattern.matcher("El").lookingAt());
         //        System.out.println(pattern.matcher("El").matches());
-        return new ResponseEntity<>(JavaCountriesApplication.countryList.getCountryWithLetterBegginingWith(o1 -> pattern.matcher(o1.getName()).lookingAt()), HttpStatus.OK);
+        return new ResponseEntity<>(JavaCountriesApplication.countryList.getCountryWithLetterBeggingWith(o1 -> pattern.matcher(o1.getName()).lookingAt()), HttpStatus.OK);
     }
+
 }

@@ -209,13 +209,43 @@ public class CountryList {
         countryList.add(new Country("Seychelles", 95702, 460, 36));
     }
 
-    public ArrayList<Country> getCountries()
-    {
+    public ArrayList<Country> getCountries() {
         countryList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
         return countryList;
     }
 
-    public ArrayList<Country> getCountryWithLetterBegginingWith(CountryChecker tester)
+    public ArrayList<Country> getCountryWithLetterBeggingWith(CountryChecker tester) {
+        ArrayList<Country> result = new ArrayList<>();
+        for (Country c : countryList) {
+            if (tester.test(c)) {
+                result.add(c);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Country> getCountriesByPopulation(CountryChecker tester) {
+        ArrayList<Country> result = new ArrayList<>();
+        for (Country c : countryList) {
+            if (tester.test(c)) {
+                result.add(c);
+            }
+        }
+        return result;
+    }
+
+    public Country getCountryWithSmallestPopulation()
+    {
+        countryList.sort((c1, c2) -> c1.getPopulation() - c2.getPopulation());
+        return countryList.get(0);
+    }
+    public Country getCountryWithLargestPopulation()
+    {
+        countryList.sort((c1, c2) -> c2.getPopulation() - c1.getPopulation());
+        return countryList.get(0);
+    }
+
+    public ArrayList<Country> getCountriesByMedianAge(CountryChecker tester)
     {
         ArrayList<Country> result = new ArrayList<>();
         for(Country c: countryList)
@@ -227,4 +257,5 @@ public class CountryList {
         }
         return result;
     }
+
 }
